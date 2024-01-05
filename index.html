@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration page</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/c4254e24a8.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <div id="logo">
+          <h1>GoTourism</h1>
+        </div>
+        <div id="nav-contents">
+          <ul>
+            <li class="elem"><a href="index.html">HOME</a></li>
+            <li class="elem"><a href="index.html">ABOUT US</a> </li>
+            <li class="elem"><a href="index.html">CONTACT US</a></li>
+            <li class="elem"><a href="index.html">HELP</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="contain">
+        <h2>Registration Form</h2>
+        <form>
+          <div class="input-field">
+            <label>Username</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your username"
+              onkeyup="userValid()"
+            />
+            <span id="name-err">username required</span>
+          </div>
+          <div class="input-field">
+            <label>Password</label>
+            <input
+              type="text"
+              id="pass"
+              placeholder="Enter password"
+              onkeyup="passValid()"
+            />
+            <span id="pass-err">password required</span>
+          </div>
+          <div class="input-field">
+            <label for="email">EmailID</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              onkeyup="emailValid()"
+            />
+            <span id="email-err">email required</span>
+          </div>
+          <button>Submit</button>
+        </form>
+      </div>
+    </section>
+
+    <script
+      src="https://kit.fontawesome.com/4a61b7bfab.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      var nameErr = document.getElementById("name-err");
+      var passErr = document.getElementById("pass-err");
+      var emailErr = document.getElementById("email-err");
+
+      function userValid() {
+        var user = document.getElementById("name").value;
+
+        if (user.length < 5) {
+          nameErr.innerHTML = "enter more than 5 characters";
+          return false;
+        }
+
+        nameErr.innerHTML = '<i class="fa-solid fa-check"></i>';
+        return true;
+      }
+
+      function passValid(){
+        var password = document.getElementById('pass').value;
+        if (password.length < 5) {
+            passErr.innerHTML = "enter more than 5 characters";
+          return false;
+        }
+
+        passErr.innerHTML = '<i class="fa-solid fa-check"></i>';
+        return true;
+      }
+
+      function emailValid(){
+        var emailid = document.getElementById('email').value;
+        if(emailid.length == 0){
+            emailErr.innerHTML = 'Email is reuqired';
+            return false;
+        }
+
+        if(!emailid.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+            emailErr.innerHTML = 'Email invalid';
+            return false;
+        }
+
+        emailErr.innerHTML =  '<i class="fa-solid fa-check"></i>';
+        return true;       
+
+      }
+    </script>
+  </body>
+</html>
